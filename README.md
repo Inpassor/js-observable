@@ -3,7 +3,7 @@
 
 ## Install
 
-You can clone the repository or use NPM package `observable.js`.
+You can clone the repository or use NPM package `js-observable`.
 
 
 ## Development
