@@ -1,11 +1,9 @@
 const path = require('path');
-const webpack = require('webpack');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const UnminifiedWebpackPlugin = require('unminified-webpack-plugin');
 
 module.exports = {
-    entry: {
-        'observable': './src/Observable.ts',
-        'observable.min': './src/Observable.ts'
-    },
+    entry: './src/Observable.ts',
     module: {
         rules: [
             {
@@ -16,37 +14,37 @@ module.exports = {
         ]
     },
     resolve: {
-        extensions: ['.ts', '.tsx']
+        extensions: ['.ts', '.tsx', '.js']
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: '[name].js',
+        filename: 'observable.min.js',
         libraryTarget: 'umd'
     },
     plugins: [
-        new webpack.optimize.UglifyJsPlugin({
-            include: /\.min\.js$/,
-            minimize: true,
-            beautify: false,
-            output: {
-                comments: false
-            },
-            mangle: {
-                screw_ie8: true
-            },
-            compress: {
-                screw_ie8: true,
-                warnings: false,
-                conditionals: true,
-                unused: true,
-                comparisons: true,
-                sequences: true,
-                dead_code: true,
-                evaluate: true,
-                if_return: true,
-                join_vars: true,
-                negate_iife: false
+        new UglifyJsPlugin({
+            extractComments: false,
+            uglifyOptions: {
+                minimize: true,
+                beautify: false,
+                output: {
+                    comments: false
+                },
+                mangle: {},
+                compress: {
+                    warnings: false,
+                    conditionals: true,
+                    unused: true,
+                    comparisons: true,
+                    sequences: true,
+                    dead_code: true,
+                    evaluate: true,
+                    if_return: true,
+                    join_vars: true,
+                    negate_iife: false
+                }
             }
-        })
+        }),
+        new UnminifiedWebpackPlugin()
     ]
 };

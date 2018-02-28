@@ -5,16 +5,18 @@
     "main": "dist/observable.js",
     "dependencies": {},
     "devDependencies": {
-        "@types/node": "^9.4.0",
-        "ts-loader": "^3.4.0",
+        "@types/node": "^9.4.6",
+        "ts-loader": "^4.0.0",
         "tslint": "^5.9.1",
-        "typescript": "^2.6.2",
-        "uglifyjs-webpack-plugin": "^1.1.8",
-        "webpack": "^3.10.0"
+        "typescript": "^2.7.2",
+        "uglifyjs-webpack-plugin": "^1.2.2",
+        "unminified-webpack-plugin": "^1.4.2",
+        "webpack": "^4.0.1",
+        "webpack-cli": "^2.0.9"
     },
     "scripts": {
-        "build": "node_modules/.bin/webpack",
-        "watch": "node_modules/.bin/webpack --watch"
+        "build": "node_modules/.bin/webpack --mode production",
+        "watch": "node_modules/.bin/webpack --mode production --watch"
     },
     "author": "Oleg V. Kuzmin",
     "repository": {
@@ -28,6 +30,7 @@
     "homepage": "https://github.com/Inpassor/js-observable",
     "keywords": [
         "observable",
+        "javascript",
         "typescript"
     ]
 }
